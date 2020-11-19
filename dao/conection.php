@@ -5,8 +5,8 @@ class DAO {
     private $dsn, $user, $password, $conn;
     
     function __construct() {
-        $this->dsn = 'mysql:dbname=projeto;host=localhost';
-        $this->user = 'root';
+        $this->dsn = 'mysql:dbname=id10782594_projeto;host=localhost';
+        $this->user = 'id10782594_root';
         $this->password = 'nD4K56o=y9#+2akN';
         
         try {
