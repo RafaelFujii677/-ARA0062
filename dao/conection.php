@@ -8,6 +8,7 @@ class DAO {
         $this->dsn = 'mysql:dbname=id10782594_projeto;host=localhost';
         $this->user = 'id10782594_root';
         $this->password = '~xZYJ4|gnQ>#aX*<';
+
         
         try {
             $this->conn = new PDO($this->dsn, $this->user, $this->password);
