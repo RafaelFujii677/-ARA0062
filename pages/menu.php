@@ -1,13 +1,6 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["autenticado"])) {
-    echo "
-    <script>
-    window.location.replace('https://pegasusmusic.000webhostapp.com/');
-    </script>
-    ";
-}
+include_once "../security/auth.php";
+include_once "../dao/conection.php";
 
 ?>
 
@@ -26,17 +19,21 @@ if (!isset($_SESSION["autenticado"])) {
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="card text-white bg-dark mb-3">
-            <div class="card-header">Cabeçalho</div>
-            <div class="card-body">
-                <h5 class="card-title">Título de Card Dark</h5>
-                <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o
-                    conteúdo do card.</p>
-            </div>
-        </div>
-    </div>
-
+    <?php
+    $bd = new DAO();
+    $sql = "select * from Usuarios";
+    $html = "
+    <div class='container'>
+        <a href='../index.html'> <- Sair ".session_destroy()." </a> 
+            <h1>Blog</h1>
+            <ul class='nav'>
+                <li class='nav-item'>
+                    <a class='nav-link active' href='lista-user.php'>Cadastro de Usuários</a>
+                </li>
+            </ul>
+    </div>";
+    echo $html;
+    ?>
 </body>
 
 </html>

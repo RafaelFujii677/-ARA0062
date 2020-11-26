@@ -5,9 +5,9 @@ class DAO {
     private $dsn, $user, $password, $conn;
     
     function __construct() {
-        $this->dsn = 'mysql:dbname=mydb;host=localhost';
-        $this->user = 'root';
-        $this->password = 'root';
+        $this->dsn = 'mysql:dbname=id10782594_projeto;host=localhost';
+        $this->user = 'id10782594_root';
+        $this->password = '~xZYJ4|gnQ>#aX*<';
         
         try {
             $this->conn = new PDO($this->dsn, $this->user, $this->password);
