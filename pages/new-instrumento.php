@@ -5,7 +5,7 @@ include_once "../dao/conection.php";
 <!doctype html>
 <html lang="pt-br">
   <head>
-  <title>Novo usuário</title>
+  <title>Novo Instrumento</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -18,20 +18,28 @@ include_once "../dao/conection.php";
       
     <div class="container">
         
-        <h1>Tela de inclusão de usuários</h1>
+        <h1>Tela de inclusão de instrumentos</h1>
          <hr>
-        <a href="lista-user.php"> < Voltar </a>
+        <a href="lista-instrumentos.php"> < Voltar </a>
         
        <br><br>
         
-        <form action="../dao/incluir-usuario.php">
+        <form action="../dao/incluir-instrumento.php">
           <div class="form-group">
-            <label for="exampleInputEmail1">Login</label>
-            <input type="text" name="login" class="form-control"  >
+            <label>Nome</label>
+            <input type="text" name="nome" class="form-control"  >
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Senha</label>
-            <input type="password" name="senha" class="form-control" >
+            <label>Marca</label>
+            <input type="text" name="marca" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label>Tipo</label>
+            <input type="text" name="tipo" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label>Preço</label>
+            <input type="number" step="0.01" name="preco" class="form-control" >
           </div>
           <button type="submit" class="btn btn-primary">Salvar</button>
         </form>

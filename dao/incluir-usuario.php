@@ -2,19 +2,25 @@
 
 include_once "conection.php";
 
-$login=$_GET["login"];
-$senha=$_GET["senha"];
+$login = $_GET["login"];
+$senha = $_GET["senha"];
 
 if (isset($_GET["id"])) { //atualiza
     $id = $_GET["id"];
-    $sql = "update `usuarios` set login='$login', senha='$senha' where id='$id' ";
-}else { //grava um novo
-    $sql = "INSERT INTO `usuarios` (`id`, `login`, `senha`) VALUES (NULL, '$login', '$senha')";    
+    $sql = "UPDATE Usuarios set login='$login', senha='$senha' where id='$id' ";
+} else { //grava um novo
+    $sql = "INSERT INTO Usuarios (id, login, senha) VALUES (NULL, '$login', '$senha')";
 }
 
 $bd = new DAO();
+$contador = $bd->exec($sql);
 
-echo "<h1>Usuário salvo com sucesso.</h1>";
+if($contador != null){
+    echo "<h1>foi armazenado/atualizado ". $contador ." registro</h1>";
+}else{
+    echo "<h1>erro</h1>";
+}
+
 
 ?>
 

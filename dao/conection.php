@@ -7,7 +7,7 @@ class DAO {
     function __construct() {
         $this->dsn = 'mysql:dbname=id10782594_projeto;host=localhost';
         $this->user = 'id10782594_root';
-        $this->password = '~xZYJ4|gnQ>#aX*<';
+        $this->password = 'yNB67X=*Wp+z1O{L';
 
         
         try {
@@ -26,11 +26,10 @@ class DAO {
     }
     
     function exec($sql){
-         try {
-           return $this->conn->exec($sql);
-        } catch (PDOException $e) {
-            echo 'Exec failed: ' . $e->getMessage();
-        }
-    }
+        try {
+          return $this->conn->exec($sql);
+       } catch (PDOException $e) {
+           echo 'Exec failed: ' . $e->getMessage();
+       }
+   }
 }
-?>

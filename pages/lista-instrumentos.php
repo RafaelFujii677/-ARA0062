@@ -6,7 +6,7 @@ include_once "../dao/conection.php";
 <html lang="pt-br">
 
 <head>
-    <title>Lista de usuários</title>
+    <title>Lista de Instrumentos</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,20 +20,22 @@ include_once "../dao/conection.php";
 
 <body>
     <div class="container">
-        <h1>Tela de usuários</h1>
+        <h1>Tela de instrumentos</h1>
         <hr>
         <a href="menu.php">
             < Voltar </a> <br><br>
 
-                <a class="btn btn-primary" href="new-user.php" role="button">Incluir</a>
+                <a class="btn btn-primary" href="new-instrumento.php" role="button">Incluir</a>
                 <br><br>
 
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Login</th>
-                            <th>Senha</th>
+                            <th>Nome</th>
+                            <th>Marca</th>
+                            <th>Tipo</th>
+                            <th>Preço</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -42,17 +44,19 @@ include_once "../dao/conection.php";
                         <?php
 
                         $bd = new DAO();
-                        $sql = "select * from Usuarios";
+                        $sql = "SELECT * FROM Instrumentos";
 
                         foreach ($bd->query($sql) as $row) {
                             echo "<tr>";
                             echo "<td>" . $row['id'] . "</td>";
-                            echo "<td>" . $row['login'] . "</td>";
-                            echo "<td>" . $row['senha'] . "</td>";
+                            echo "<td>" . $row['nome'] . "</td>";
+                            echo "<td>" . $row['marca'] . "</td>";
+                            echo "<td>" . $row['tipo'] . "</td>";
+                            echo "<td>" . $row['preco'] . "</td>";
 
                             echo "<td><a href='#' onclick ='Pergunta(" . $row['id'] . ")'> Excluir</a></td>";
 
-                            echo "<td><a href='../dao/editar-usuario.php?id=" . $row['id'] . "'>Alterar</a></td>";
+                            echo "<td><a href='../dao/editar-instrumento.php?id=" . $row['id'] . "'>Alterar</a></td>";
 
                             echo "</tr>";
                         }
@@ -62,7 +66,7 @@ include_once "../dao/conection.php";
                 <script>
                     function Pergunta(id) {
                         if (confirm("Deseja realmente excluir ?")) {
-                            window.location.replace("https://pegasusmusic.000webhostapp.com/dao/excluir-usuario.php?id=" + id);
+                            window.location.replace("https://pegasusmusic.000webhostapp.com/dao/excluir-instrumento.php?id=" + id);
                         }
                     }
                 </script>

@@ -1,5 +1,5 @@
 <?php
-include_once "../security/auth.php";
+include_once "security/auth.php";
 include_once "../dao/conection.php";
 
 ?>
@@ -21,19 +21,37 @@ include_once "../dao/conection.php";
 <body>
     <?php
     $bd = new DAO();
-    $sql = "select * from Usuarios";
-    $html = "
-    <div class='container'>
-        <a href='../index.html'> <- Sair ".session_destroy()." </a> 
-            <h1>Blog</h1>
+    $sql = "SELECT * FROM Instrumentos";
+    echo"   <div class='container'>
+                <a href='../index.html'> <- Sair " . session_destroy() . " </a> 
+            </div>";
+
+    echo"<div class='container'>
+            <h1>Pegasus music</h1>
             <ul class='nav'>
                 <li class='nav-item'>
                     <a class='nav-link active' href='lista-user.php'>Cadastro de Usuários</a>
                 </li>
-            </ul>
-    </div>";
-    echo $html;
+                <li class='nav-item'>
+                    <a class='nav-link active' href='lista-instrumentos.php'>Cadastro de instrumentos</a>
+                </li>
+            </ul>";
+            foreach ($bd->query($sql) as $row) {
+                echo "
+                <div class='Container'>
+                    <div class='card' style='width: 18rem;'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>" . $row['tipo'] . "</h5>
+                            <h6 class='card-subtitle mb-2 text-muted'>Nome: " . $row['nome'] . "</h6>
+                            <h6 class='card-subtitle mb-2 text-muted'>Marca: " . $row['marca'] . "</h6>
+                            <p class='card-text'>R$ " . $row['preco'] . "</p>
+                        </div>
+                    </div>
+                </div>";
+            };
+        "</div>";
     ?>
+    
 </body>
 
 </html>
