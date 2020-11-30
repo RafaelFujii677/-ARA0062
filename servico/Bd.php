@@ -1,13 +1,13 @@
 <?php
 
-class DAO {
+class Bd {
     
     private $dsn, $user, $password, $conn;
     
     function __construct() {
-        $this->dsn = 'mysql:dbname=id10782594_projeto;host=localhost';
-        $this->user = 'id10782594_root';
-        $this->password = 'nD4K56o=y9#+2akN';
+        $this->dsn = 'mysql:dbname=id13482607_aula_php;host=localhost';
+        $this->user = 'id13482607_root';
+        $this->password = '_R]rBVRDX5ZALJ~5';
         
         try {
             $this->conn = new PDO($this->dsn, $this->user, $this->password);
@@ -15,21 +15,32 @@ class DAO {
             echo 'Connection failed: ' . $e->getMessage();
         }
     }
-
+    
+    /**
+     * Rodar uma consulta select
+     **/
     function query($sql) {
        try {
            return $this->conn->query($sql);
         } catch (PDOException $e) {
             echo 'Query failed: ' . $e->getMessage();
         }
+        
+        
     }
     
+    /**
+     * Executar sql = insert, update, delete
+     * */
     function exec($sql){
          try {
            return $this->conn->exec($sql);
         } catch (PDOException $e) {
             echo 'Exec failed: ' . $e->getMessage();
         }
+        
     }
 }
+
+
 ?>

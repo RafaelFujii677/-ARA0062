@@ -1,12 +1,21 @@
-<!-- Crie uma tela de login e senha.
+<?php
 
-login: admin
-senha:1234
+include_once "../servico/Autenticacao.php";
 
-Caso o usuário se autentique com sucesso, exiba uma tela de boas vindas.
-Caso contrário exiba uma tela de aviso.
--->
+include_once "../servico/Bd.php";
 
+$id=$_GET["id"];
+        
+$bd = new Bd();
+$sql = "select * from usuario_3006 where id='$id'";
+
+foreach ($bd->query($sql) as $row) {
+    $login =  $row['login'];
+    $senha =  $row['senha'];
+}
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,27 +26,46 @@ Caso contrário exiba uma tela de aviso.
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>Sistema em PHP</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <title>Gerenciamento de usuários</title>
   </head>
   <body>
       
     <div class="container">
-        <h1> Sistema de teste</h1>
         
-        <form action="verifica.php" method="post">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Login</label>
-                <input type="text" name="login" class="form-control" id="exampleInputEmail1" >
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Senha</label>
-                <input type="password" name="senha" class="form-control" id="exampleInputPassword1">
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+        <h1>Tela de inclusão de usuários</h1>
+         <hr>
+        <a href="ConsultaUsuario.php"> < Voltar </a>
+        
+       <br><br>
+        
+        <form action="salvar.php">
+          <div class="form-group">
+              
+          
+            <label for="exampleInputEmail1">Login</label>
+            <?php
+            
+            echo "<input type='hidden' name='id' value='$id' >";
+            
+            echo "<input type='text' name='login' class='form-control' value='$login'  >";
+            
+            ?>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Senha</label>
+            <?php
+            echo "<input type='text' name='senha' class='form-control' value='$senha'  >";
+            
+            ?>
+
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
-    
-    
-    </div> <!-- fim container -->
+
+       
+        <br><br>
+   </div> <!-- container -->
     
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -50,5 +78,6 @@ Caso contrário exiba uma tela de aviso.
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
+     
   </body>
 </html>

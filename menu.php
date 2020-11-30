@@ -1,11 +1,7 @@
-<!-- Crie uma tela de login e senha.
+<?php
+include_once "servico/Autenticacao.php";
 
-login: admin
-senha:1234
-
-Caso o usuário se autentique com sucesso, exiba uma tela de boas vindas.
-Caso contrário exiba uma tela de aviso.
--->
+?>
 
 <!doctype html>
 <html lang="en">
@@ -17,28 +13,34 @@ Caso contrário exiba uma tela de aviso.
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>Sistema em PHP</title>
+    <title>Tela de sistema principal</title>
   </head>
   <body>
       
-    <div class="container">
-        <h1> Sistema de teste</h1>
+      <div class="container">
+          <div class="row">
+              <div class="col-10"><h1>Bem-vindo usuário</h1></div>
+              <div class="col-2">
+                  <?php
+                  
+                   echo "<p>".$_SESSION['loginusuario']."</p>";
+                    ?>
+              </div>
+          </div>
         
-        <form action="verifica.php" method="post">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Login</label>
-                <input type="text" name="login" class="form-control" id="exampleInputEmail1" >
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Senha</label>
-                <input type="password" name="senha" class="form-control" id="exampleInputPassword1">
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+       
+           <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="usuario/ConsultaUsuario.php">Cadastro de Usuários</a>
+              </li>
+            </ul>
     
+        <hr>
+        <br>      
+          
+      </div>
     
-    </div> <!-- fim container -->
-    
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
